@@ -24,9 +24,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Fire",
+                    "name": "PrimaryAction",
                     "type": "Button",
                     "id": "3bc78e97-05d1-475a-975e-9a9d02fc6154",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SecondaryAction",
+                    "type": "Button",
+                    "id": "cff2ff12-b6e7-4ebe-86ea-9d9277771db4",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -215,7 +224,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Fire",
+                    "action": "PrimaryAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -226,7 +235,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Fire",
+                    "action": "PrimaryAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -237,7 +246,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Touch",
-                    "action": "Fire",
+                    "action": "PrimaryAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -248,7 +257,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Joystick",
-                    "action": "Fire",
+                    "action": "PrimaryAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -259,7 +268,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "XR",
-                    "action": "Fire",
+                    "action": "PrimaryAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -282,6 +291,28 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "499a19b1-b0c7-4b9f-a13d-178109b8fc48",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "SecondaryAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dc3e2ecb-7a77-462d-aa4e-09fdb939f4c4",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "SecondaryAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

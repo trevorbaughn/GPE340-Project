@@ -18,6 +18,8 @@ public class PlayerController : Controller
     private PlayerInputActions _playerControls;
     private InputAction _move;
     private InputAction _crouch;
+    private InputAction _primaryAction;
+    private InputAction _secondaryAction;
     
     #endregion
 
@@ -46,8 +48,18 @@ public class PlayerController : Controller
 
         _crouch = _playerControls.Player.Crouch;
         _crouch.Enable();
-        _crouch.performed += Crouch;
+        _crouch.started += Crouch;
+
+        _primaryAction = _playerControls.Player.PrimaryAction;
+        _primaryAction.Enable();
+        _primaryAction.started += PrimaryActionBegin;
+        _primaryAction.performed += PrimaryActionEnd;
         
+        _secondaryAction = _playerControls.Player.SecondaryAction;
+        _secondaryAction.Enable();
+        _secondaryAction.started += SecondaryActionBegin;
+        _secondaryAction.performed += SecondaryActionEnd;
+
         #endregion
     }
 
@@ -55,6 +67,8 @@ public class PlayerController : Controller
     {
         _move.Disable();
         _crouch.Disable();
+        _primaryAction.Disable();
+        _secondaryAction.Disable();
     }
 
     protected override void MakeDecisions()
@@ -121,5 +135,38 @@ public class PlayerController : Controller
             
         }
         
+    }
+
+
+    private void PrimaryActionBegin(InputAction.CallbackContext context)
+    {
+        if (controlledPawn.weapon != null)
+        {
+            controlledPawn.weapon.OnPrimaryAttackBegin.Invoke();
+        }
+    }
+
+    private void PrimaryActionEnd(InputAction.CallbackContext context)
+    {
+        if (controlledPawn.weapon != null)
+        {
+            controlledPawn.weapon.OnPrimaryAttackEnd.Invoke();
+        }
+    }
+    
+    private void SecondaryActionBegin(InputAction.CallbackContext context)
+    {
+        if (controlledPawn.weapon != null)
+        {
+            controlledPawn.weapon.OnSecondaryAttackBegin.Invoke();
+        }
+    }
+
+    private void SecondaryActionEnd(InputAction.CallbackContext context)
+    {
+        if (controlledPawn.weapon != null)
+        {
+            controlledPawn.weapon.OnSecondaryAttackEnd.Invoke();
+        }
     }
 }
