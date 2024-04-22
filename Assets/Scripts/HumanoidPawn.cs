@@ -30,7 +30,7 @@ public class HumanoidPawn : Pawn
         _animator.SetFloat("Forward", direction.z);
     }
 
-    public void Crouch(bool isCrouching)
+    public void SetCrouch(bool isCrouching)
     {
         _animator.SetBool("isCrouching", isCrouching);
     }

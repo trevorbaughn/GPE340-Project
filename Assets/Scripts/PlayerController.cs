@@ -8,19 +8,30 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : Controller
 {
-    public bool isMouseRotation;
-    private bool isCrouching;
     
-    //Input System Variables
+    [Tooltip("Does the pawn rotate towards the mouse position?")]
+    public bool isMouseRotation; 
+    
+    private bool _isCrouching;
+    
+    #region InputVars
     private PlayerInputActions _playerControls;
     private InputAction _move;
     private InputAction _crouch;
+    
+    #endregion
 
-    //Smoothing variables
+    #region MovementSmoothingVars
     private Vector2 _currentMoveDir;
     private Vector2 _smoothVelocity;
     [SerializeField] private float smoothSpeed;
-
+    
+    #endregion
+    
+    //debug
+    public KeyCode _takeDamage;
+    
+    
     private void Awake()
     {
         _playerControls = new PlayerInputActions();
@@ -28,12 +39,16 @@ public class PlayerController : Controller
 
     private void OnEnable()
     {
+        //Enable Input Actions
+        #region enableInput
         _move = _playerControls.Player.Move;
         _move.Enable();
 
         _crouch = _playerControls.Player.Crouch;
         _crouch.Enable();
         _crouch.performed += Crouch;
+        
+        #endregion
     }
 
     private void OnDisable()
@@ -54,16 +69,28 @@ public class PlayerController : Controller
         
         //Rotate controlled pawn
         RotatePawn(isMouseRotation);
+        
+        //debug
+        if (Input.GetKeyDown(_takeDamage))
+        {
+            GetComponent<Health>().TakeDamage(10);
+        }
     }
 
+    /// <summary>
+    /// Rotates the pawn either based on an input axis or towards the mouse cursor
+    /// </summary>
+    /// <param name="isMouseRotation">Whether the pawn should be rotated towards the cursor or not</param>
     private void RotatePawn(bool isMouseRotation)
     {
-        if (isMouseRotation)
+        if (isMouseRotation) // Rotation towards mouse position
         {
+            //a "Ray" is an infinite line; in this case in the direction of the camera from where the cursor is
             Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             Plane footPlane = new Plane(Vector3.up, controlledPawn.transform.position);
 
+            //rotate the controlled pawn towards the point where mouseRay intersects with footPlane
             float distanceToIntersect;
             if (footPlane.Raycast(mouseRay, out distanceToIntersect))
             {
@@ -82,14 +109,15 @@ public class PlayerController : Controller
         }
     }
 
+    //Crouch input action function.  Toggles _isCrouching and sets it on the pawn (and through that, the animator).
     private void Crouch(InputAction.CallbackContext context)
     {
         HumanoidPawn humanoidPawn = controlledPawn as HumanoidPawn;
         if (humanoidPawn != null)
         {
             //toggle crouch
-            isCrouching = !isCrouching;
-            humanoidPawn.Crouch(isCrouching); 
+            _isCrouching = !_isCrouching;
+            humanoidPawn.SetCrouch(_isCrouching); 
             
         }
         

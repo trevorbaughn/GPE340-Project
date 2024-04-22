@@ -775,6 +775,18 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1445668696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445668682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c05f47af83875e020a3769acaafc279e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1626560071
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,6 +1083,10 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6190044247675737432, guid: 2427520f891ece54293ca4bbc01d092b, type: 3}
+      propertyPath: _takeDamage
+      value: 102
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190044247675737432, guid: 2427520f891ece54293ca4bbc01d092b, type: 3}
       propertyPath: smoothSpeed
       value: 0.2
       objectReference: {fileID: 0}
@@ -1136,6 +1152,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8146599833737060229, guid: 2427520f891ece54293ca4bbc01d092b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1445668695}
+    - targetCorrespondingSourceObject: {fileID: 8146599833737060229, guid: 2427520f891ece54293ca4bbc01d092b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1445668696}
   m_SourcePrefab: {fileID: 100100000, guid: 2427520f891ece54293ca4bbc01d092b, type: 3}
 --- !u!114 &6295968648324945298
 MonoBehaviour:
