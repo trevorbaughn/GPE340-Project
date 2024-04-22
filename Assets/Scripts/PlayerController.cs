@@ -50,15 +50,15 @@ public class PlayerController : Controller
         _crouch.Enable();
         _crouch.started += Crouch;
 
-        _primaryAction = _playerControls.Player.PrimaryAction;
-        _primaryAction.Enable();
-        _primaryAction.started += PrimaryActionBegin;
-        _primaryAction.performed += PrimaryActionEnd;
+        //_primaryAction = _playerControls.Player.PrimaryAction;
+        //_primaryAction.Enable();
+        //_primaryAction.started += PrimaryActionBegin;
+       // _primaryAction.performed += PrimaryActionEnd;
         
-        _secondaryAction = _playerControls.Player.SecondaryAction;
-        _secondaryAction.Enable();
-        _secondaryAction.started += SecondaryActionBegin;
-        _secondaryAction.performed += SecondaryActionEnd;
+        //_secondaryAction = _playerControls.Player.SecondaryAction;
+        //_secondaryAction.Enable();
+        //_secondaryAction.started += SecondaryActionBegin;
+        //_secondaryAction.performed += SecondaryActionEnd;
 
         #endregion
     }
@@ -67,8 +67,8 @@ public class PlayerController : Controller
     {
         _move.Disable();
         _crouch.Disable();
-        _primaryAction.Disable();
-        _secondaryAction.Disable();
+        //_primaryAction.Disable();
+        //_secondaryAction.Disable();
     }
 
     protected override void MakeDecisions()
@@ -88,6 +88,20 @@ public class PlayerController : Controller
         if (Input.GetKeyDown(_takeDamage))
         {
             GetComponent<Health>().TakeDamage(10);
+        }
+        
+        //defaults for now - TODO: figure out new input system alternative
+        if (Input.GetButtonDown("Fire1")) {
+            controlledPawn.weapon.OnPrimaryAttackBegin.Invoke();
+        }
+        if (Input.GetButtonUp("Fire1")) {
+            controlledPawn.weapon.OnPrimaryAttackEnd.Invoke();
+        }
+        if (Input.GetButtonDown("Fire2")) {
+            controlledPawn.weapon.OnSecondaryAttackBegin.Invoke();
+        }
+        if (Input.GetButtonUp("Fire2")) {
+            controlledPawn.weapon.OnSecondaryAttackEnd.Invoke();
         }
     }
 
@@ -138,6 +152,10 @@ public class PlayerController : Controller
     }
 
 
+    /// <summary>
+    /// TODO: FIX INPUTACTIONS AS INPUT METHOD.  See MakeDecisions()
+    /// </summary>
+    /// <param name="context"></param>
     private void PrimaryActionBegin(InputAction.CallbackContext context)
     {
         if (controlledPawn.weapon != null)
@@ -145,7 +163,6 @@ public class PlayerController : Controller
             controlledPawn.weapon.OnPrimaryAttackBegin.Invoke();
         }
     }
-
     private void PrimaryActionEnd(InputAction.CallbackContext context)
     {
         if (controlledPawn.weapon != null)
@@ -153,7 +170,6 @@ public class PlayerController : Controller
             controlledPawn.weapon.OnPrimaryAttackEnd.Invoke();
         }
     }
-    
     private void SecondaryActionBegin(InputAction.CallbackContext context)
     {
         if (controlledPawn.weapon != null)
@@ -161,7 +177,6 @@ public class PlayerController : Controller
             controlledPawn.weapon.OnSecondaryAttackBegin.Invoke();
         }
     }
-
     private void SecondaryActionEnd(InputAction.CallbackContext context)
     {
         if (controlledPawn.weapon != null)

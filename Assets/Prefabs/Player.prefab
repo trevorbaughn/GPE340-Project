@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4635732306445059823, guid: ba5978446720f91a0b8f598bf0183bab, type: 3}
       propertyPath: maxRotationSpeed
-      value: 50
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 6095363779057131790, guid: ba5978446720f91a0b8f598bf0183bab, type: 3}
       propertyPath: m_Name
@@ -183,7 +183,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c2734a5bcd7d6ab29871b66a645e3c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMouseRotation: 0
-  rotateSpeed: 2000
+  isMouseRotation: 1
   smoothSpeed: 0.2
   _takeDamage: 102
