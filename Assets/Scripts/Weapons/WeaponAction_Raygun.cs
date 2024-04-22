@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WeaponAction_Raygun : WeaponAction
 {
@@ -12,7 +13,8 @@ public class WeaponAction_Raygun : WeaponAction
     private LineRenderer _lineRenderer;
 
     [SerializeField] private GameObject _laserPrefab;
-    
+
+    [SerializeField] private UnityEvent OnFire;
     
     public override void Awake()
     {
@@ -60,6 +62,8 @@ public class WeaponAction_Raygun : WeaponAction
             laser.startPoint = firepoint.position;
             laser.endPoint = laser.startPoint + firepoint.forward * Mathf.Sqrt(fireDistance);
             
+            //has fired raygun
+            OnFire.Invoke();
             
             lastAttackTime = Time.time;
         }

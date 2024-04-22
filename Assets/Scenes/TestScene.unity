@@ -1117,6 +1117,10 @@ PrefabInstance:
       propertyPath: smoothSpeed
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 8897065401886734008, guid: ad8704fa9058e4f0893ca7cb00158703, type: 3}
+      propertyPath: isMouseRotation
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9016541986778175180, guid: ad8704fa9058e4f0893ca7cb00158703, type: 3}
       propertyPath: OnPrimaryAttackBegin.m_PersistentCalls.m_Calls.Array.size
       value: 1

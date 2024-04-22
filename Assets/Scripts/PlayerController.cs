@@ -10,7 +10,7 @@ public class PlayerController : Controller
 {
     
     [Tooltip("Does the pawn rotate towards the mouse position?")]
-    public bool isMouseRotation; 
+    public bool isMouseRotation;
     
     private bool _isCrouching;
     

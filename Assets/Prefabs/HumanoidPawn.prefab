@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particlePrefab: {fileID: 100004, guid: 96536afb634b32043bb988d4576053d3, type: 3}
-  lifespan: 0
+  lifespan: 2
   target: {fileID: 6907613233990597556}
 --- !u!4 &6907613233990597556 stripped
 Transform:

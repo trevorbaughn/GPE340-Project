@@ -184,5 +184,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMouseRotation: 0
+  rotateSpeed: 2000
   smoothSpeed: 0.2
   _takeDamage: 102

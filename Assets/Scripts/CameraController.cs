@@ -26,6 +26,6 @@ public class CameraController : MonoBehaviour
 
         this.transform.position = Vector3.MoveTowards(transform.position, newPosition, speed * Time.deltaTime);
         
-        transform.LookAt(target.position, target.forward);
+        transform.LookAt(target.position, transform.up);
     }
 }
