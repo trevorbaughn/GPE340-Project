@@ -17,7 +17,8 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveCamera(target, distance, speed);
+        if(target != null)
+            MoveCamera(target, distance, speed);
     }
 
     private void MoveCamera(Transform target, float distance, float speed)

@@ -38,8 +38,6 @@ public class WeaponAction_Pelletgun : WeaponAction
     
     public void Shoot()
     {        
-        RaycastHit hit;
-
         // check if can shoot
         float secondsPerShot = 1/attackRate;
         if (Time.time >= lastAttackTime + secondsPerShot) {

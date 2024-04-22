@@ -72,7 +72,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7642850653634227316, guid: ba5978446720f91a0b8f598bf0183bab, type: 3}
+      propertyPath: OnTakeDamage.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 7758699430333531955}
+    m_RemovedComponents:
+    - {fileID: 1037324627992865169, guid: ba5978446720f91a0b8f598bf0183bab, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -84,10 +89,10 @@ PrefabInstance:
       addedObject: {fileID: 6424933001957881788}
     - targetCorrespondingSourceObject: {fileID: 6095363779057131790, guid: ba5978446720f91a0b8f598bf0183bab, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1491618376810385919}
+      addedObject: {fileID: 8897065401886734008}
     - targetCorrespondingSourceObject: {fileID: 6095363779057131790, guid: ba5978446720f91a0b8f598bf0183bab, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8897065401886734008}
+      addedObject: {fileID: 7758699430333531955}
   m_SourcePrefab: {fileID: 100100000, guid: ba5978446720f91a0b8f598bf0183bab, type: 3}
 --- !u!1 &6140686350785192329 stripped
 GameObject:
@@ -151,26 +156,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1491618376810385919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6140686350785192329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f25fcc0b902b160c8e01d4ae5d20fcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnTakeDamage:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDeath:
-    m_PersistentCalls:
-      m_Calls: []
-  maxHealth: 0
-  currentHealth: 0
 --- !u!114 &8897065401886734008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,3 +171,17 @@ MonoBehaviour:
   isMouseRotation: 1
   smoothSpeed: 0.2
   _takeDamage: 102
+--- !u!114 &7758699430333531955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6140686350785192329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09097818029ae1c9b7ff6f22134323f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 8300000, guid: 727b308fc0dbceb28ac4916e31a159f3, type: 3}
+  volume: 1

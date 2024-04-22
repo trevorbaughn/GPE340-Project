@@ -12,8 +12,6 @@ public class PlayerController : Controller
     [Tooltip("Does the pawn rotate towards the mouse position?")]
     public bool isMouseRotation;
     
-    private bool _isCrouching;
-    
     #region InputVars
     private PlayerInputActions _playerControls;
     private InputAction _move;
@@ -26,9 +24,12 @@ public class PlayerController : Controller
     #region MovementSmoothingVars
     private Vector2 _currentMoveDir;
     private Vector2 _smoothVelocity;
+    [Tooltip("Speed to smooth between animations")]
     [SerializeField] private float smoothSpeed;
-    
     #endregion
+    
+    private bool _isCrouching;
+    
     
     //debug
     public KeyCode _takeDamage;
@@ -50,15 +51,15 @@ public class PlayerController : Controller
         _crouch.Enable();
         _crouch.started += Crouch;
 
-        //_primaryAction = _playerControls.Player.PrimaryAction;
-        //_primaryAction.Enable();
-        //_primaryAction.started += PrimaryActionBegin;
-       // _primaryAction.performed += PrimaryActionEnd;
-        
-        //_secondaryAction = _playerControls.Player.SecondaryAction;
-        //_secondaryAction.Enable();
-        //_secondaryAction.started += SecondaryActionBegin;
-        //_secondaryAction.performed += SecondaryActionEnd;
+        _primaryAction = _playerControls.Player.PrimaryAction;
+        _primaryAction.Enable();
+        _primaryAction.performed += PrimaryActionBegin;
+        _primaryAction.canceled += PrimaryActionEnd;
+
+        _secondaryAction = _playerControls.Player.SecondaryAction;
+        _secondaryAction.Enable();
+        _secondaryAction.performed += SecondaryActionBegin;
+        _secondaryAction.canceled += SecondaryActionEnd;
 
         #endregion
     }
@@ -67,8 +68,8 @@ public class PlayerController : Controller
     {
         _move.Disable();
         _crouch.Disable();
-        //_primaryAction.Disable();
-        //_secondaryAction.Disable();
+        _primaryAction.Disable();
+        _secondaryAction.Disable();
     }
 
     protected override void MakeDecisions()
@@ -89,20 +90,8 @@ public class PlayerController : Controller
         {
             GetComponent<Health>().TakeDamage(10);
         }
+
         
-        //defaults for now - TODO: figure out new input system alternative
-        if (Input.GetButtonDown("Fire1")) {
-            controlledPawn.weapon.OnPrimaryAttackBegin.Invoke();
-        }
-        if (Input.GetButtonUp("Fire1")) {
-            controlledPawn.weapon.OnPrimaryAttackEnd.Invoke();
-        }
-        if (Input.GetButtonDown("Fire2")) {
-            controlledPawn.weapon.OnSecondaryAttackBegin.Invoke();
-        }
-        if (Input.GetButtonUp("Fire2")) {
-            controlledPawn.weapon.OnSecondaryAttackEnd.Invoke();
-        }
     }
 
     /// <summary>
