@@ -140,11 +140,7 @@ public class PlayerController : Controller
         
     }
 
-
-    /// <summary>
-    /// TODO: FIX INPUTACTIONS AS INPUT METHOD.  See MakeDecisions()
-    /// </summary>
-    /// <param name="context"></param>
+    
     private void PrimaryActionBegin(InputAction.CallbackContext context)
     {
         if (controlledPawn.weapon != null)

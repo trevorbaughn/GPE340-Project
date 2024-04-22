@@ -8,7 +8,7 @@ public class Health : MonoBehaviour
     public UnityEvent OnTakeDamage;
     public UnityEvent OnDeath;
 
-    [SerializeField] private float maxHealth;
+    public float maxHealth;
     public float currentHealth;
 
     public void TakeDamage(float damage)

@@ -113,6 +113,8 @@ public class HumanoidPawn : Pawn
         UnequipWeapon();
 
         weapon = Instantiate(weaponToEquip, _weaponAttachmentPoint) as Weapon; //instantiate and add to player, parent is attachment point
+
+        weapon.gameObject.layer = this.gameObject.layer;
     }
 
     public override void UnequipWeapon()

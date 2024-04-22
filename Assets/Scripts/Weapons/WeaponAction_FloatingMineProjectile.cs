@@ -4,14 +4,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class WeaponAction_Pelletgun : WeaponAction
+public class WeaponAction_FloatingMineProjectile : WeaponAction
 {
     [Header("Weapon Variables")]
     [SerializeField] private Transform firepoint;
     [SerializeField] private GameObject _pelletPrefab;
     [SerializeField] private UnityEvent OnFire;
-
-    private bool _isAutoAttackActive;
     
     
     public override void Awake()
@@ -30,10 +28,6 @@ public class WeaponAction_Pelletgun : WeaponAction
     {
         base.Update();
 
-        if (_isAutoAttackActive)
-        {
-            Shoot();
-        }
     }
     
     public void Shoot()
@@ -52,23 +46,18 @@ public class WeaponAction_Pelletgun : WeaponAction
             if (pelletData != null)
             {
                 pelletData.damage = damageDone;
+                
+                //TODO: make these look a bit nicer.
+                //pellet.GetComponentInChildren<MeshRenderer>().enabled = false;
+                pelletData.moveSpeed = 0; // shouldn't move
             }
             
             //has fired pelletgun
             OnFire.Invoke();
             
+            
             lastAttackTime = Time.time;
         }
     }
 
-    public void AutofireBegin()
-    {
-        _isAutoAttackActive = true;
-    }
-
-    public void AutofireEnd()
-    {
-        _isAutoAttackActive = false;
-
-    }
 }

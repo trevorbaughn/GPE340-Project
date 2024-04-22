@@ -19,8 +19,7 @@ public class Pickup : MonoBehaviour
 
     public virtual void OnTriggerEnter(Collider other)
     {
-        Destroy(this.gameObject);
-
         OnPickup.Invoke();
+        Destroy(this.gameObject);
     }
 }

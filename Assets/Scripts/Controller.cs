@@ -28,6 +28,8 @@ public abstract class Controller : MonoBehaviour
         controlledPawn = pawnToPossess;
 
         controlledPawn.pawnController = this;
+        
+        controlledPawn.gameObject.layer = this.gameObject.layer; 
     }
 
     public virtual void Unpossess()
