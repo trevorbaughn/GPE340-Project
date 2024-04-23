@@ -95,15 +95,6 @@ public class PlayerController : Controller
             //Rotate controlled pawn
             RotatePawn(isMouseRotation);
         }
-        
-        
-        
-        //debug
-        if (Input.GetKeyDown(_takeDamage))
-        {
-            //controlledPawn.GetComponent<Health>().TakeDamage(10);
-            GameManager.instance.SpawnEnemy(GameManager.instance.prefabsPossibleEnemies[0]);
-        }
 
         
     }

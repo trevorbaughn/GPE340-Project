@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public PlayerController player;
     public CameraController mainCamera;
     public HUD hud;
-    [HideInInspector] public bool isPaused = false;
+    public bool isPaused = false;
     public SpawnPoint[] spawnPoints;
     
     #region prefabs
