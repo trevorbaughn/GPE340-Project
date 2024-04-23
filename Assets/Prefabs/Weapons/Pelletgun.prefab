@@ -193,6 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageDone: 10
   attackRate: 2
+  maxAccuracyRotation: 10
   firepoint: {fileID: 8209606519148994750}
   _pelletPrefab: {fileID: 9126091508297857529, guid: 4e9f66243e4b15e3bbe3633df666aa8d, type: 3}
   OnFire:

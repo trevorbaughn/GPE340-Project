@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class Controller : MonoBehaviour
 {
-    protected Pawn controlledPawn;
+    [HideInInspector] public Pawn controlledPawn;
+
+    public float hitAccuracy;
+
+    public UnityEvent OnPossess;
 
     
     protected virtual void Start()
@@ -30,6 +35,8 @@ public abstract class Controller : MonoBehaviour
         controlledPawn.pawnController = this;
         
         controlledPawn.gameObject.layer = this.gameObject.layer; 
+        
+        OnPossess.Invoke();
     }
 
     public virtual void Unpossess()

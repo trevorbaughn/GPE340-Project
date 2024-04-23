@@ -47,8 +47,19 @@ public class WeaponAction_Raygun : WeaponAction
         // check if can shoot
         float secondsPerShot = 1/attackRate;
         if (Time.time >= lastAttackTime + secondsPerShot) {
+            
+            #region accuracy
+            Vector3 newFireDirection = firepoint.forward; //technically oldDirection, but will be set to new
+
+            // get rotation change based on accuracy
+            Quaternion accuracyFireDelta = Quaternion.Euler(0, GetAccuracyRotationDegrees(weapon.owner.pawnController.hitAccuracy), 0);
+        
+            //Quaternion * Vector = actual new direction... order matters
+            newFireDirection = accuracyFireDelta * newFireDirection;
+            #endregion
+            
             // raycast
-            if (Physics.Raycast(firepoint.position, firepoint.forward, out hit, fireDistance)) {
+            if (Physics.Raycast(firepoint.position, newFireDirection, out hit, fireDistance)) {
                 
                 // if hit and other has Health
                 Health otherHealth = hit.collider.gameObject.GetComponent<Health>();
@@ -60,7 +71,7 @@ public class WeaponAction_Raygun : WeaponAction
             //instantiate a laser child, get component, and set positions
             LaserBeam laser = Instantiate(_laserPrefab, this.transform).GetComponent<LaserBeam>();
             laser.startPoint = firepoint.position;
-            laser.endPoint = laser.startPoint + firepoint.forward * Mathf.Sqrt(fireDistance);
+            laser.endPoint = laser.startPoint + (newFireDirection * fireDistance);
             
             //has fired raygun
             OnFire.Invoke();

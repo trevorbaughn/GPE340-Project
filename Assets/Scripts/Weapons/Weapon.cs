@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class Weapon : MonoBehaviour
 {
+    [HideInInspector] public Pawn owner;
+    
     [Header("Events")] 
     public UnityEvent OnPrimaryAttackBegin;
     public UnityEvent OnPrimaryAttackEnd;
@@ -15,4 +17,5 @@ public class Weapon : MonoBehaviour
     public Transform RightHandIKTarget;
     public Transform LeftHandIKTarget;
 
+    
 }

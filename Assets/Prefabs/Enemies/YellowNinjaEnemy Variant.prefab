@@ -89,6 +89,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cba162cea5fac1f7a1519e6faad828f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAccuracy: 5
   agent: {fileID: 0}
   stoppingDistance: 4
   targetTransform: {fileID: 0}
+  currentState: 0
+  shootingDistance: 10
+  shootingAngle: 0

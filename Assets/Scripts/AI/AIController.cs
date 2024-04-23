@@ -11,7 +11,7 @@ public class AIController : Controller
     public Transform targetTransform;
     protected Vector3 DesiredVelocity = Vector3.zero;
     
-    public enum AIStates { Idle, Chase, ChaseAndPrimary};
+    public enum AIStates { Idle, SeekTarget, ChaseAndPrimary};
     [Tooltip("The state the AI will start on")]
     [SerializeField] protected AIStates currentState;
     protected float timeEnteredCurrentState;
@@ -71,7 +71,9 @@ public class AIController : Controller
             return;
         }
 
-        float distanceToTarget = Vector3.Distance(targetTransform.position, controlledPawn.transform.position);
+        if(targetTransform == null) ChangeState(AIStates.SeekTarget);
+        
+        DistanceToTarget = Vector3.Distance(targetTransform.position, controlledPawn.transform.position);
     }
     
     /// <summary>
@@ -111,5 +113,14 @@ public class AIController : Controller
     protected virtual void Chase(Transform target)
     {
         Chase(target.position);
+    }
+
+    //stub; if AI gets senses, this can be expanded
+    protected virtual void SeekTarget()
+    {
+        if (GameManager.instance.player.controlledPawn != null)
+        {
+            targetTransform = GameManager.instance.player.controlledPawn.transform;
+        }
     }
 }

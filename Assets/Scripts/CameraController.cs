@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private Transform target;
+    public Transform target;
     [SerializeField] private float distance;
     [SerializeField] private float speed;
     
@@ -27,6 +28,7 @@ public class CameraController : MonoBehaviour
 
         this.transform.position = Vector3.MoveTowards(transform.position, newPosition, speed * Time.deltaTime);
         
-        transform.LookAt(target.position, transform.up);
+        transform.LookAt(new Vector3(transform.position.x, 0, transform.position.z), transform.up);
+        
     }
 }

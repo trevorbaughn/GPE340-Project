@@ -11,6 +11,7 @@ public class PlayerController : Controller
     
     [Tooltip("Does the pawn rotate towards the mouse position?")]
     public bool isMouseRotation;
+    public int lives = 3;
     
     #region InputVars
     private PlayerInputActions _playerControls;
@@ -74,21 +75,29 @@ public class PlayerController : Controller
 
     protected override void MakeDecisions()
     {
+        if (controlledPawn == null) return;
+        
         //get input from InputActions, smooth it, pass it to a vector3 and move
         Vector2 moveDirection = _move.ReadValue<Vector2>();
         _currentMoveDir = Vector2.SmoothDamp(_currentMoveDir, moveDirection, ref _smoothVelocity, smoothSpeed);
         Vector3 direction = new Vector3(_currentMoveDir.x, 0, _currentMoveDir.y);
         //direction = Vector3.ClampMagnitude(direction, 1);
+
+        if (controlledPawn != null)
+        {
+            controlledPawn.Move(direction);
+            
+            //Rotate controlled pawn
+            RotatePawn(isMouseRotation);
+        }
         
-        controlledPawn.Move(direction);
         
-        //Rotate controlled pawn
-        RotatePawn(isMouseRotation);
         
         //debug
         if (Input.GetKeyDown(_takeDamage))
         {
-            GetComponent<Health>().TakeDamage(10);
+            //controlledPawn.GetComponent<Health>().TakeDamage(10);
+            GameManager.instance.SpawnEnemy(GameManager.instance.prefabsPossibleEnemies[0]);
         }
 
         

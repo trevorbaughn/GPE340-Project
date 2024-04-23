@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079c7cb40e1e8b0139482af1b730fb53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAccuracy: 2
   agent: {fileID: 0}
   stoppingDistance: 2
   targetTransform: {fileID: 0}

@@ -18,12 +18,19 @@ public class RedNinjaAI : AIController
 
                 if (IsTimePassed(0.25f))
                 {
-                    ChangeState(AIStates.ChaseAndPrimary);
+                    ChangeState(AIStates.SeekTarget);
                 }
                 break;
             case AIStates.ChaseAndPrimary:
                 DoChaseAndPrimaryState();
                 
+                break;
+            case AIStates.SeekTarget:
+                SeekTarget();
+                if (targetTransform != null)
+                {
+                    ChangeState(AIStates.ChaseAndPrimary);
+                }
                 break;
         }
     }
@@ -38,7 +45,7 @@ public class RedNinjaAI : AIController
         controlledPawn.RotateToLookAt(targetTransform.position);
         
         //if in shooting distance
-        if (Vector3.Distance(targetTransform.position, controlledPawn.transform.position) <= shootingDistance)
+        if (DistanceToTarget <= shootingDistance)
         {
             //and within angle
             Vector3 vectorToTarget = targetTransform.position - controlledPawn.transform.position;

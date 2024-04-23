@@ -37,14 +37,25 @@ public class WeaponAction_Pelletgun : WeaponAction
     }
     
     public void Shoot()
-    {        
+    {  
         // check if can shoot
         float secondsPerShot = 1/attackRate;
         if (Time.time >= lastAttackTime + secondsPerShot) {
+            
+            #region accuracy
+            Vector3 newFireDirection = firepoint.forward; //technically oldDirection, but will be set to new
 
-            //instantiate a pellet child and get it's component
+            // get rotation change based on accuracy
+            Quaternion accuracyFireDelta = Quaternion.Euler(0, GetAccuracyRotationDegrees(weapon.owner.pawnController.hitAccuracy), 0);
+        
+            //Quaternion * Vector = actual new direction... order matters
+            newFireDirection = accuracyFireDelta * newFireDirection;
+            #endregion
+
+            //instantiate a pellet child and get it's component, set layer and rotate for accuracy
             GameObject pellet = Instantiate(_pelletPrefab, firepoint.position, firepoint.rotation);
             pellet.gameObject.layer = this.gameObject.layer;
+            pellet.transform.Rotate(0, GetAccuracyRotationDegrees(weapon.owner.pawnController.hitAccuracy), 0);
             
             Projectile pelletData = pellet.GetComponent<Projectile>();
             

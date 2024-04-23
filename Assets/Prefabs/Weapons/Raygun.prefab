@@ -252,6 +252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageDone: 5
   attackRate: 1
+  maxAccuracyRotation: 5
   fireDistance: 500
   firepoint: {fileID: 5990806258520570294}
   _laserPrefab: {fileID: 737148777772992524, guid: 74ddc14a595d082389e23423d2ef811b, type: 3}
@@ -394,6 +395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageDone: 5
   attackRate: 2
+  maxAccuracyRotation: 0
   firepoint: {fileID: 5990806258520570294}
   _pelletPrefab: {fileID: 9126091508297857529, guid: 4e9f66243e4b15e3bbe3633df666aa8d, type: 3}
   OnFire:

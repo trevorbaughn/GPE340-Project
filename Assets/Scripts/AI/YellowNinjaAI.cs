@@ -10,7 +10,7 @@ public class YellowNinjaAI : AIController
     protected override void Start()
     {
         base.Start();
-
+        
         //set actual stopping distance to close to 0, since we're manually doing that to target behind target
         agent.stoppingDistance = 0.5f;
     }
@@ -26,7 +26,7 @@ public class YellowNinjaAI : AIController
                 
                 if (IsTimePassed(0.25f))
                 {
-                    ChangeState(AIStates.ChaseAndPrimary);
+                    ChangeState(AIStates.SeekTarget);
                 }
                 break;
             case AIStates.ChaseAndPrimary:
@@ -34,7 +34,13 @@ public class YellowNinjaAI : AIController
                 
                 DoChaseAndPrimaryState();
                 break;
-            
+            case AIStates.SeekTarget:
+                SeekTarget();
+                if (targetTransform != null)
+                {
+                    ChangeState(AIStates.ChaseAndPrimary);
+                }
+                break;
         }
         
         
@@ -42,6 +48,8 @@ public class YellowNinjaAI : AIController
     
     private void DoChaseAndPrimaryState()
     {
+        if (targetTransform == null) return;
+        
         //target behind target
         Vector3 targetMovePos = targetTransform.position - targetTransform.forward * Mathf.Sqrt(stoppingDistance);
         
@@ -51,7 +59,7 @@ public class YellowNinjaAI : AIController
         controlledPawn.RotateToLookAt(targetTransform.position);
         
         //if in shooting distance
-        if (Vector3.Distance(targetTransform.position, controlledPawn.transform.position) <= shootingDistance)
+        if (DistanceToTarget <= shootingDistance)
         {
             //and within angle
             Vector3 vectorToTarget = targetTransform.position - controlledPawn.transform.position;

@@ -11,7 +11,7 @@ public class HumanoidPawn : Pawn
     [SerializeField] protected Weapon[] _startingWeaponOptions;
     
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         _animator = GetComponent<Animator>();
 
@@ -118,6 +118,8 @@ public class HumanoidPawn : Pawn
         weapon = Instantiate(weaponToEquip, _weaponAttachmentPoint) as Weapon; //instantiate and add to player, parent is attachment point
 
         weapon.gameObject.layer = this.gameObject.layer;
+
+        weapon.owner = this;
     }
 
     public override void UnequipWeapon()

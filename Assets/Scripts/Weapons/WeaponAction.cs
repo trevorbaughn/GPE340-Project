@@ -11,6 +11,7 @@ public class WeaponAction : GameAction
     [Header("Variables")] 
     [SerializeField] protected float damageDone;
     [SerializeField] protected float attackRate;
+    [SerializeField] protected float maxAccuracyRotation;
     protected float lastAttackTime;
 
     public override void Awake()
@@ -29,5 +30,14 @@ public class WeaponAction : GameAction
     public override void Update()
     {
         base.Update();
+    }
+    
+    protected virtual float GetAccuracyRotationDegrees(float accuracyModifier = 1)
+    {
+        //random value between 0 and 1
+        float accuracyDeltaPercentage = UnityEngine.Random.value;
+
+        // return percentage between left and right of perfect angle
+        return Mathf.Lerp(-maxAccuracyRotation, maxAccuracyRotation, accuracyDeltaPercentage) * accuracyModifier;
     }
 }
