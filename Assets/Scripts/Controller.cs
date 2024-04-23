@@ -23,6 +23,8 @@ public abstract class Controller : MonoBehaviour
     }
     protected virtual void Update()
     {
+        if (GameManager.instance.isPaused) return;
+        
         MakeDecisions();
     }
     

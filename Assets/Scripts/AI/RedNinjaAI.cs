@@ -22,6 +22,8 @@ public class RedNinjaAI : AIController
                 }
                 break;
             case AIStates.ChaseAndPrimary:
+                if (targetTransform == null) ChangeState(AIStates.Idle); //break before doing, because null check
+                
                 DoChaseAndPrimaryState();
                 
                 break;

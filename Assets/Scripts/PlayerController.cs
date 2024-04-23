@@ -19,6 +19,7 @@ public class PlayerController : Controller
     private InputAction _crouch;
     private InputAction _primaryAction;
     private InputAction _secondaryAction;
+    private InputAction _pause;
     
     #endregion
 
@@ -62,6 +63,9 @@ public class PlayerController : Controller
         _secondaryAction.performed += SecondaryActionBegin;
         _secondaryAction.canceled += SecondaryActionEnd;
 
+        _pause = _playerControls.Player.TogglePause;
+        _pause.Enable();
+        _pause.started += TogglePause;
         #endregion
     }
 
@@ -147,6 +151,11 @@ public class PlayerController : Controller
             
         }
         
+    }
+
+    private void TogglePause(InputAction.CallbackContext context)
+    {
+        GameManager.instance.TogglePause();
     }
 
     
