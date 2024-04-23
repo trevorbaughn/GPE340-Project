@@ -11,6 +11,16 @@ public abstract class Pawn : MonoBehaviour
     public float maxRotationSpeed = 10.0f;
 
     public Weapon weapon;
+    [SerializeField] protected Transform weaponAttachmentPoint;
+    [SerializeField] protected Weapon[] startingWeaponOptions;
+    
+    protected virtual void Start()
+    {
+        if (startingWeaponOptions.Length > 0)
+        {
+            EquipWeapon(startingWeaponOptions[UnityEngine.Random.Range(0,startingWeaponOptions.Length)]);
+        }
+    }
     
     public abstract void Move(Vector3 moveDir);
     public abstract void Rotate(float speed);
@@ -20,4 +30,6 @@ public abstract class Pawn : MonoBehaviour
     public abstract void EquipWeapon(Weapon weaponToEquip);
 
     public abstract void UnequipWeapon();
+
+    
 }

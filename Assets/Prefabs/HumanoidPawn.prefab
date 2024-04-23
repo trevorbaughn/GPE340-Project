@@ -469,7 +469,12 @@ MonoBehaviour:
   maxMovementSpeed: 10
   maxRotationSpeed: 50
   weapon: {fileID: 0}
+  weaponAttachmentPoint: {fileID: 0}
+  startingWeaponOptions:
+  - {fileID: 8769580923048895676, guid: ee21290ab7a451eb0a25cf1cb83e4d94, type: 3}
+  - {fileID: 6592760016913726900, guid: ace1a9b837a8f83519d4269a5708d387, type: 3}
   _weaponAttachmentPoint: {fileID: 3144539993896211523}
+  _startingWeaponOptions: []
 --- !u!114 &7642850653634227316
 MonoBehaviour:
   m_ObjectHideFlags: 0
