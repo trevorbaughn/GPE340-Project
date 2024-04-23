@@ -26,6 +26,8 @@ public class HumanoidPawn : Pawn
 
     public override void Move(Vector3 direction)
     {
+        if (_animator == null) return; 
+        
         direction *= maxMovementSpeed;
         
         //convert from world space (controls) to local space for animator

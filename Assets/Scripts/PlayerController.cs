@@ -39,6 +39,7 @@ public class PlayerController : Controller
     
     private void Awake()
     {
+        lives--; //remove one life at start so it's the actual amount in the inspector
         _playerControls = new PlayerInputActions();
     }
 
@@ -79,7 +80,7 @@ public class PlayerController : Controller
 
     protected override void MakeDecisions()
     {
-        if (controlledPawn == null) return;
+        if (controlledPawn == null || _move == null) return;
         
         //get input from InputActions, smooth it, pass it to a vector3 and move
         Vector2 moveDirection = _move.ReadValue<Vector2>();
@@ -87,7 +88,7 @@ public class PlayerController : Controller
         Vector3 direction = new Vector3(_currentMoveDir.x, 0, _currentMoveDir.y);
         //direction = Vector3.ClampMagnitude(direction, 1);
 
-        if (controlledPawn != null)
+        if (controlledPawn != null && direction != null)
         {
             controlledPawn.Move(direction);
             

@@ -14,13 +14,13 @@ public class GameManager : MonoBehaviour
     public CameraController mainCamera;
     public HUD hud;
     [HideInInspector] public bool isPaused = false;
-    
     public SpawnPoint[] spawnPoints;
     
     #region prefabs
     public GameObject prefabPlayerController;
     public GameObject prefabPlayerPawn;
     public GameObject[] prefabsPossibleEnemies;
+    public GameObject prefabEnemyUI;
     #endregion
     
     #region waves
@@ -28,6 +28,10 @@ public class GameManager : MonoBehaviour
     public int currentWave;
     public List<WaveData> waves;
     #endregion
+    
+    
+    
+
     
     //Awake is called before Start
     private void Awake()
@@ -40,6 +44,7 @@ public class GameManager : MonoBehaviour
         else //this isn't THE game manager
         {
             Destroy(gameObject);
+            
         }
     }
 
@@ -88,6 +93,14 @@ public class GameManager : MonoBehaviour
         if (newAIHealth != null)
         {
             newAIHealth.OnDeath.AddListener(OnEnemyDeath);
+            
+            GameObject newEnemyUI = Instantiate(prefabEnemyUI, newEnemy.transform) as GameObject;
+            // connect enemyhealthdisplay
+            EnemyHealthDisplay newEnemyUIScript = newEnemyUI.GetComponent<EnemyHealthDisplay>();
+            if (newEnemyUIScript != null)
+            {
+                newEnemyUIScript.enemyHealth = newAIHealth;
+            }
         }
     }
     
@@ -105,7 +118,6 @@ public class GameManager : MonoBehaviour
         // spawn pawn and connect
         player.Possess(SpawnPawn());
         
-        hud.player = player;
         hud.OnSpawn();
         hud.UpdateHUD();
         
@@ -184,9 +196,19 @@ public class GameManager : MonoBehaviour
     {
         SpawnWave(waves[waveNumber]);
     }
+
+    private void FindHUD()
+    {
+        hud = FindObjectOfType<HUD>();
+    }
     
     public void StartGame()
     {
+        isPaused = false;
+        Time.timeScale = 1.0f;
+        
+        FindHUD();
+        
         FindCamera();
 
         LoadSpawnPoints();
@@ -210,14 +232,22 @@ public class GameManager : MonoBehaviour
     
     public void Pause()
     {
-        isPaused = true;
-        Time.timeScale = 0.0f;
+        if (!isPaused)
+        {
+            isPaused = true;
+            Time.timeScale = 0.0f;
+            SceneManager.LoadScene("PauseMenu", LoadSceneMode.Additive);
+        }
     }
     
     public void UnPause()
     {
-        isPaused = false;
-        Time.timeScale = 1.0f;
+        if (isPaused)
+        {
+            SceneManager.UnloadSceneAsync("PauseMenu");
+            isPaused = false;
+            Time.timeScale = 1.0f;
+        }
     }
     
     public void TogglePause()

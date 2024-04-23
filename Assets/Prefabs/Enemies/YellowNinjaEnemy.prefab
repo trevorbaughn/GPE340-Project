@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6095363779057131790, guid: ba5978446720f91a0b8f598bf0183bab, type: 3}
       propertyPath: m_Name
-      value: YellowNinjaEnemy Variant
+      value: YellowNinjaEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 6541942897997859172, guid: ba5978446720f91a0b8f598bf0183bab, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -89,7 +89,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cba162cea5fac1f7a1519e6faad828f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlledPawn: {fileID: 0}
   hitAccuracy: 5
+  OnPossess:
+    m_PersistentCalls:
+      m_Calls: []
   agent: {fileID: 0}
   stoppingDistance: 4
   targetTransform: {fileID: 0}
