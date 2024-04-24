@@ -72,8 +72,8 @@ public class HUD : MonoBehaviour
         //for each icon by index
         for (int i = 0; i < lifeIcons.Length; i++)
         {
-            //if the index is less than the current number of lives (+1, we start with 1 life), enable the icon at that index
-            if (i < GameManager.instance.player.lives+1)
+            //if the index is less than the current number of lives, enable the icon at that index
+            if (i < GameManager.instance.player.lives)
             {
                 lifeIcons[i].enabled = true;
             }

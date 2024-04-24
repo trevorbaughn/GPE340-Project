@@ -145,6 +145,8 @@ public class GameManager : MonoBehaviour
             SpawnPlayer();
             
             player.lives--;
+            
+            hud.UpdateHUD();
         } 
         // else call game over function
         else

@@ -51,9 +51,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isMouseRotation: 1
-  lives: 3
+  lives: 4
   smoothSpeed: 0.2
-  _takeDamage: 102
 --- !u!114 &6989061083810274634
 MonoBehaviour:
   m_ObjectHideFlags: 0

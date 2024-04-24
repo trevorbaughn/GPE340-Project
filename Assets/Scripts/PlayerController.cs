@@ -32,15 +32,10 @@ public class PlayerController : Controller
     
     private bool _isCrouching;
     
-    
-    //debug
-    public KeyCode _takeDamage;
-    
-    
     private void Awake()
     {
-        lives--; //remove one life at start so it's the actual amount in the inspector
         _playerControls = new PlayerInputActions();
+        lives -= 1;
     }
 
     private void OnEnable()
