@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Health))]
-public class DeathDestroy : MonoBehaviour
+public class DeathDestroy : GameAction
 {
-    void Awake()
+    public override void Awake()
     {
         GetComponent<Health>().OnDeath.AddListener(OnDeathDestroy);
+        
+        base.Awake();
     }
 
-    void OnDeathDestroy()
+    private void OnDeathDestroy()
     {
         Destroy(this.gameObject);
     }

@@ -42,19 +42,6 @@ public class HumanoidPawn : Pawn
         _animator.SetBool("isCrouching", isCrouching);
     }
 
-    public void OnAnimatorMove()
-    {
-        transform.position = _animator.rootPosition;
-        transform.rotation = _animator.rootRotation;
-        
-        AIController aiController = pawnController as AIController;
-        if (aiController != null)
-        {
-            //set agent to understand next position as the position from _animator
-            aiController.agent.nextPosition = _animator.rootPosition;
-        }
-    }
-
     public override void Rotate(float speed)
     {
         this.transform.Rotate(0, speed * maxRotationSpeed * Time.deltaTime, 0);
@@ -70,21 +57,35 @@ public class HumanoidPawn : Pawn
             Quaternion.RotateTowards(transform.rotation, lookRotation, maxRotationSpeed * Time.deltaTime);
     }
     
+    public Animator GetAnimator()
+    {
+        return _animator;
+    }
+    
+    public void OnAnimatorMove()
+    {
+        transform.position = _animator.rootPosition;
+        transform.rotation = _animator.rootRotation;
+        
+        AIController aiController = pawnController as AIController;
+        if (aiController != null)
+        {
+            //set agent to understand next position as the position from _animator
+            aiController.agent.nextPosition = _animator.rootPosition;
+        }
+    }
+    
     public void OnAnimatorIK()
     {
-        // If they don't have a weapon, don't worry about IK
+        // no weapon, no need for IK
         if (!weapon) {
-            // Set their IK weights to 0
             _animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 0f);
             _animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 0f);
             _animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 0f);
             _animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 0f);
-        
-            // Leave the function
             return;
         }
-
-        // Set the IK for our Right Hand
+        // set IK for right hand
         if (weapon.RightHandIKTarget)
         {
             _animator.SetIKPosition(AvatarIKGoal.RightHand, weapon.RightHandIKTarget.position);
@@ -97,8 +98,7 @@ public class HumanoidPawn : Pawn
             _animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 0f);
             _animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 0f);
         }
-
-        // Set the IK for our Left LeftHandIKTarget)
+        // set IK for left hand
         if (weapon.LeftHandIKTarget)
         {
             _animator.SetIKPosition(AvatarIKGoal.LeftHand, weapon.LeftHandIKTarget.position);

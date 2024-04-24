@@ -35,6 +35,7 @@ public class HUD : MonoBehaviour
     {
         _health = GameManager.instance.player.controlledPawn.GetComponent<Health>();
         _health.OnTakeDamage.AddListener(UpdateHealthBar);
+        _health.OnHealDamage.AddListener(UpdateHealthBar);
         _health.OnDeath.AddListener(UpdateLifeIcons);
 
         UpdateHUD();

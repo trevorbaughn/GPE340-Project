@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
 {
     public UnityEvent OnTakeDamage;
     public UnityEvent OnDeath;
+    public UnityEvent OnHealDamage;
 
     public float maxHealth;
     public float currentHealth;
@@ -21,5 +22,11 @@ public class Health : MonoBehaviour
         {
             OnDeath.Invoke();
         }
+    }
+
+    public void HealDamage(float toHeal)
+    {
+        currentHealth = Mathf.Clamp(currentHealth + toHeal, 0, maxHealth);
+        OnHealDamage.Invoke();
     }
 }

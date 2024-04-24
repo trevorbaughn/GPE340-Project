@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4635732306445059823, guid: ba5978446720f91a0b8f598bf0183bab, type: 3}
       propertyPath: maxMovementSpeed
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4635732306445059823, guid: ba5978446720f91a0b8f598bf0183bab, type: 3}
       propertyPath: maxRotationSpeed
-      value: 1000
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 6095363779057131790, guid: ba5978446720f91a0b8f598bf0183bab, type: 3}
       propertyPath: m_Name
@@ -66,11 +66,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7642850653634227316, guid: ba5978446720f91a0b8f598bf0183bab, type: 3}
       propertyPath: maxHealth
-      value: 30
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 7642850653634227316, guid: ba5978446720f91a0b8f598bf0183bab, type: 3}
       propertyPath: currentHealth
-      value: 30
+      value: 35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -97,7 +97,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079c7cb40e1e8b0139482af1b730fb53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitAccuracy: 2
+  controlledPawn: {fileID: 0}
+  hitAccuracy: 1.5
+  OnPossess:
+    m_PersistentCalls:
+      m_Calls: []
   agent: {fileID: 0}
   stoppingDistance: 2
   targetTransform: {fileID: 0}

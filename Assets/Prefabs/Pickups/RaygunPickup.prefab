@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a10718b4c4885e18d017cacd7543ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupCollider: {fileID: 0}
+  pickupCollider: {fileID: 5567640590278071508}
   OnPickup:
     m_PersistentCalls:
       m_Calls:
@@ -97,7 +97,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -3065977074708377615, guid: dd9bee7c3c8b5847eb1cbed7feb16095, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

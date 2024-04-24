@@ -29,6 +29,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 762115739988068261, guid: feb5367938b9af05ea6a642ee0e33193, type: 3}
+      propertyPath: OnPrimaryAttackEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 762115739988068261, guid: feb5367938b9af05ea6a642ee0e33193, type: 3}
       propertyPath: OnPrimaryAttackBegin.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
@@ -57,6 +61,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 762115739988068261, guid: feb5367938b9af05ea6a642ee0e33193, type: 3}
+      propertyPath: OnPrimaryAttackEnd.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AutofireEnd
+      objectReference: {fileID: 0}
+    - target: {fileID: 762115739988068261, guid: feb5367938b9af05ea6a642ee0e33193, type: 3}
       propertyPath: OnSecondaryAttackBegin.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1865072232315345458}
@@ -70,11 +78,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 762115739988068261, guid: feb5367938b9af05ea6a642ee0e33193, type: 3}
       propertyPath: OnPrimaryAttackBegin.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Shoot
+      value: AutofireBegin
       objectReference: {fileID: 0}
     - target: {fileID: 762115739988068261, guid: feb5367938b9af05ea6a642ee0e33193, type: 3}
       propertyPath: OnSecondaryAttackEnd.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AutofireEnd
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 762115739988068261, guid: feb5367938b9af05ea6a642ee0e33193, type: 3}
       propertyPath: OnSecondaryAttackBegin.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -82,7 +90,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 762115739988068261, guid: feb5367938b9af05ea6a642ee0e33193, type: 3}
       propertyPath: OnSecondaryAttackBegin.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AutofireBegin
+      value: Shoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 762115739988068261, guid: feb5367938b9af05ea6a642ee0e33193, type: 3}
+      propertyPath: OnPrimaryAttackEnd.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: WeaponAction_Pelletgun, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 762115739988068261, guid: feb5367938b9af05ea6a642ee0e33193, type: 3}
       propertyPath: OnPrimaryAttackBegin.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -95,6 +107,10 @@ PrefabInstance:
     - target: {fileID: 762115739988068261, guid: feb5367938b9af05ea6a642ee0e33193, type: 3}
       propertyPath: OnSecondaryAttackBegin.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: WeaponAction_Pelletgun, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 762115739988068261, guid: feb5367938b9af05ea6a642ee0e33193, type: 3}
+      propertyPath: OnPrimaryAttackEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 762115739988068261, guid: feb5367938b9af05ea6a642ee0e33193, type: 3}
       propertyPath: OnPrimaryAttackBegin.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -195,9 +211,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2d604c30184f0be08e6d60d99d3449d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageDone: 10
-  attackRate: 2
-  maxAccuracyRotation: 10
+  damageDone: 5
+  attackRate: 3
+  maxAccuracyRotation: 15
   firepoint: {fileID: 8209606519148994750}
   _pelletPrefab: {fileID: 9126091508297857529, guid: 4e9f66243e4b15e3bbe3633df666aa8d, type: 3}
   OnFire:

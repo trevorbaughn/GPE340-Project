@@ -47,7 +47,7 @@ PrefabInstance:
     - target: {fileID: 762115739988068261, guid: feb5367938b9af05ea6a642ee0e33193, type: 3}
       propertyPath: OnPrimaryAttackEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6251511702238143828}
+      objectReference: {fileID: -6485632272974403028}
     - target: {fileID: 762115739988068261, guid: feb5367938b9af05ea6a642ee0e33193, type: 3}
       propertyPath: OnSecondaryAttackEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
@@ -63,7 +63,7 @@ PrefabInstance:
     - target: {fileID: 762115739988068261, guid: feb5367938b9af05ea6a642ee0e33193, type: 3}
       propertyPath: OnSecondaryAttackEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: -6485632272974403028}
+      objectReference: {fileID: 6251511702238143828}
     - target: {fileID: 762115739988068261, guid: feb5367938b9af05ea6a642ee0e33193, type: 3}
       propertyPath: OnPrimaryAttackEnd.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 762115739988068261, guid: feb5367938b9af05ea6a642ee0e33193, type: 3}
       propertyPath: OnPrimaryAttackEnd.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Shoot
+      value: AutofireEnd
       objectReference: {fileID: 0}
     - target: {fileID: 762115739988068261, guid: feb5367938b9af05ea6a642ee0e33193, type: 3}
       propertyPath: OnPrimaryAttackEnd.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -94,11 +94,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 762115739988068261, guid: feb5367938b9af05ea6a642ee0e33193, type: 3}
       propertyPath: OnPrimaryAttackBegin.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Shoot
+      value: AutofireBegin
       objectReference: {fileID: 0}
     - target: {fileID: 762115739988068261, guid: feb5367938b9af05ea6a642ee0e33193, type: 3}
       propertyPath: OnSecondaryAttackEnd.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AutofireEnd
+      value: Shoot
       objectReference: {fileID: 0}
     - target: {fileID: 762115739988068261, guid: feb5367938b9af05ea6a642ee0e33193, type: 3}
       propertyPath: OnSecondaryAttackBegin.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -106,11 +106,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 762115739988068261, guid: feb5367938b9af05ea6a642ee0e33193, type: 3}
       propertyPath: OnSecondaryAttackBegin.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AutofireBegin
+      value: Shoot
       objectReference: {fileID: 0}
     - target: {fileID: 762115739988068261, guid: feb5367938b9af05ea6a642ee0e33193, type: 3}
       propertyPath: OnPrimaryAttackEnd.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: WeaponAction_SparkProjectile, Assembly-CSharp
+      value: WeaponAction_Raygun, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 762115739988068261, guid: feb5367938b9af05ea6a642ee0e33193, type: 3}
       propertyPath: OnPrimaryAttackEnd.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -122,7 +122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 762115739988068261, guid: feb5367938b9af05ea6a642ee0e33193, type: 3}
       propertyPath: OnSecondaryAttackEnd.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: WeaponAction_Raygun, Assembly-CSharp
+      value: WeaponAction_FloatingMineProjectile, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 762115739988068261, guid: feb5367938b9af05ea6a642ee0e33193, type: 3}
       propertyPath: OnSecondaryAttackBegin.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -255,9 +255,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageDone: 5
-  attackRate: 1
-  maxAccuracyRotation: 5
-  fireDistance: 500
+  attackRate: 2
+  maxAccuracyRotation: 20
+  fireDistance: 25
   firepoint: {fileID: 5990806258520570294}
   _laserPrefab: {fileID: 737148777772992524, guid: 74ddc14a595d082389e23423d2ef811b, type: 3}
   OnFire:
