@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public float defaultMusicSliderValue;
     public float defaultSoundSliderValue;
     public bool isFullscreen;
+    public int resolutionDropdown;
     
     [Header("Sounds")]
     public AudioClip menuButton;
@@ -255,19 +256,7 @@ public class GameManager : MonoBehaviour
         isPaused = false;
         Time.timeScale = 1.0f;
     }
-
     
-    public void UnPauseToScene(string sceneName)
-    {
-        if (isPaused)
-        {
-            SceneManager.UnloadSceneAsync("PauseMenu");
-            isPaused = false;
-            Time.timeScale = 1.0f;
-
-            SceneManager.LoadScene(sceneName);
-        }
-    }
     
     public void TogglePause()
     {

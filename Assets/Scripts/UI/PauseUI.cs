@@ -12,7 +12,7 @@ public class PauseUI : MonoBehaviour
 
     public void QuitToMenu()
     {
-        GameManager.instance.UnPauseToScene("MainMenu");
-        
+        GameManager.instance.UnPause();
+        SceneManager.LoadScene("MainMenu");
     }
 }

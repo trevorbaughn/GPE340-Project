@@ -22,6 +22,7 @@ public class SettingsUI : MonoBehaviour
     [SerializeField] private Toggle isFullscreenToggle;
     
     
+    
     private void Awake()
     {
         SetResolutionOptions();
@@ -33,6 +34,7 @@ public class SettingsUI : MonoBehaviour
         musicVolumeSlider.value = GameManager.instance.defaultMusicSliderValue;
         soundVolumeSlider.value = GameManager.instance.defaultSoundSliderValue;
         isFullscreenToggle.isOn = GameManager.instance.isFullscreen;
+        resolutionDropdown.value = GameManager.instance.resolutionDropdown;
     }
 
     private void OnDisable()
@@ -41,6 +43,7 @@ public class SettingsUI : MonoBehaviour
         GameManager.instance.defaultMusicSliderValue = musicVolumeSlider.value;
         GameManager.instance.defaultSoundSliderValue = soundVolumeSlider.value;
         GameManager.instance.isFullscreen = isFullscreenToggle.isOn;
+        GameManager.instance.resolutionDropdown = resolutionDropdown.value;
     }
 
     public void OnReturnToMainMenu()
