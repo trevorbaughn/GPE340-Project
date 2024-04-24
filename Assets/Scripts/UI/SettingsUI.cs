@@ -29,18 +29,18 @@ public class SettingsUI : MonoBehaviour
 
     private void OnEnable()
     {
-        mainVolumeSlider.value = SavedValues.instance.defaultMasterSliderValue;
-        musicVolumeSlider.value = SavedValues.instance.defaultMusicSliderValue;
-        soundVolumeSlider.value = SavedValues.instance.defaultSoundSliderValue;
-        isFullscreenToggle.isOn = SavedValues.instance.isFullscreen;
+        mainVolumeSlider.value = GameManager.instance.defaultMasterSliderValue;
+        musicVolumeSlider.value = GameManager.instance.defaultMusicSliderValue;
+        soundVolumeSlider.value = GameManager.instance.defaultSoundSliderValue;
+        isFullscreenToggle.isOn = GameManager.instance.isFullscreen;
     }
 
     private void OnDisable()
     {
-        SavedValues.instance.defaultMasterSliderValue = mainVolumeSlider.value;
-        SavedValues.instance.defaultMusicSliderValue = musicVolumeSlider.value;
-        SavedValues.instance.defaultSoundSliderValue = soundVolumeSlider.value;
-        SavedValues.instance.isFullscreen = isFullscreenToggle.isOn;
+        GameManager.instance.defaultMasterSliderValue = mainVolumeSlider.value;
+        GameManager.instance.defaultMusicSliderValue = musicVolumeSlider.value;
+        GameManager.instance.defaultSoundSliderValue = soundVolumeSlider.value;
+        GameManager.instance.isFullscreen = isFullscreenToggle.isOn;
     }
 
     public void OnReturnToMainMenu()
@@ -70,19 +70,19 @@ public class SettingsUI : MonoBehaviour
     
     public void OnMainVolumeChange()
     {
-        SavedValues.instance.soundAudioSource.PlayOneShot(SavedValues.instance.menuButton);
+        GameManager.instance.soundAudioSource.PlayOneShot(GameManager.instance.menuButton);
         VolumeChange(mainAudioMixer, "MasterVolume", mainVolumeSlider);
     }
 
     public void OnMusicVolumeChange()
     {
-        SavedValues.instance.soundAudioSource.PlayOneShot(SavedValues.instance.menuButton);
+        GameManager.instance.soundAudioSource.PlayOneShot(GameManager.instance.menuButton);
         VolumeChange(mainAudioMixer, "MusicVolume", musicVolumeSlider);
     }
 
     public void OnSoundVolumeChange()
     {
-        SavedValues.instance.soundAudioSource.PlayOneShot(SavedValues.instance.menuButton);
+        GameManager.instance.soundAudioSource.PlayOneShot(GameManager.instance.menuButton);
         VolumeChange(mainAudioMixer, "SFXVolume", soundVolumeSlider);
     }
 

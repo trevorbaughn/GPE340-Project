@@ -29,7 +29,16 @@ public class GameManager : MonoBehaviour
     public List<WaveData> waves;
     #endregion
     
+    [Header("Saves Here")]
+    public float defaultMasterSliderValue;
+    public float defaultMusicSliderValue;
+    public float defaultSoundSliderValue;
+    public bool isFullscreen;
     
+    [Header("Sounds")]
+    public AudioClip menuButton;
+    public AudioSource soundAudioSource;
+    public AudioSource musicAudioSource;
     
 
     
@@ -40,6 +49,7 @@ public class GameManager : MonoBehaviour
         {
             //this is THE game manager
             instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
         else //this isn't THE game manager
         {
@@ -50,7 +60,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        StartGame();
+        
     }
 
     public void FindCamera()
