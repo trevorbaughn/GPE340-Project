@@ -7,6 +7,7 @@ public class TitleUI : MonoBehaviour
 {
     public void OnStartToMainMenu()
     {
+        GameManager.instance.soundAudioSource.PlayOneShot(GameManager.instance.menuButton);
         SceneManager.LoadScene("MainMenu");
     }
 }

@@ -12,6 +12,7 @@ public class VictoryUI : MonoBehaviour
 
     public void OnReturnToMainMenu()
     {
+        GameManager.instance.soundAudioSource.PlayOneShot(GameManager.instance.menuButton);
         SceneManager.LoadScene("MainMenu");
     }
 }

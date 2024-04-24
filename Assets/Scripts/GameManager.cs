@@ -260,6 +260,7 @@ public class GameManager : MonoBehaviour
     
     public void TogglePause()
     {
+        instance.soundAudioSource.PlayOneShot(instance.menuButton);
         if (isPaused)
         {
             UnPause();
