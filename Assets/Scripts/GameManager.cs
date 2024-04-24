@@ -244,24 +244,19 @@ public class GameManager : MonoBehaviour
     
     public void Pause()
     {
-        if (!isPaused)
-        {
-            isPaused = true;
-            Time.timeScale = 0.0f;
-            SceneManager.LoadScene("PauseMenu", LoadSceneMode.Additive);
-        }
+        isPaused = true;
+        Time.timeScale = 0.0f;
+        SceneManager.LoadScene("PauseMenu", LoadSceneMode.Additive);
     }
     
     public void UnPause()
     {
-        if (isPaused)
-        {
-            SceneManager.UnloadSceneAsync("PauseMenu");
-            isPaused = false;
-            Time.timeScale = 1.0f;
-        }
+        SceneManager.UnloadSceneAsync("PauseMenu");
+        isPaused = false;
+        Time.timeScale = 1.0f;
     }
 
+    
     public void UnPauseToScene(string sceneName)
     {
         if (isPaused)

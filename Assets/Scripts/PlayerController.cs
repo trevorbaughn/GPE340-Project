@@ -71,6 +71,7 @@ public class PlayerController : Controller
         _crouch.Disable();
         _primaryAction.Disable();
         _secondaryAction.Disable();
+        _pause.Disable();
     }
 
     protected override void MakeDecisions()
