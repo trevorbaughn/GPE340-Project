@@ -11,7 +11,6 @@ public abstract class Pawn : MonoBehaviour
     public float maxRotationSpeed = 10.0f;
 
     public Weapon weapon;
-    [SerializeField] protected Transform weaponAttachmentPoint;
     [SerializeField] protected Weapon[] startingWeaponOptions;
     
     protected virtual void Start()

@@ -12,6 +12,7 @@ public class Death_RagdollAndDestroy : GameAction
     private HumanoidPawn _humanoidPawn;
     public float destroyDelay;
     public UnityEvent onDestroyGameObject;
+    public bool isRagdoll;
 
     private Collider _mainCollider;
     private Rigidbody _mainRigidbody;
@@ -46,24 +47,30 @@ public class Death_RagdollAndDestroy : GameAction
     
     public void RagdollAndDestroy()
     {
-        //unequip weapon, activate ragdoll, set timer for destruction
-        _humanoidPawn.UnequipWeapon();
+        
+        //activate ragdoll, set timer for destruction
         ActivateRagdoll();
         Destroy(gameObject, destroyDelay);
     }
     
-    private void ActivateRagdoll()
+    public void ActivateRagdoll()
     {
+        
+        _humanoidPawn.UnequipWeapon();
         _humanoidPawn.GetAnimator().enabled = false;
-        _humanoidPawn.pawnController.enabled = false;
+        if(_humanoidPawn.pawnController != null)
+            _humanoidPawn.pawnController.enabled = false;
+        
         
         foreach (Collider collider in _childColliders)
         {
             collider.enabled = true;
+            collider.gameObject.layer = 8;
         }
         foreach (Rigidbody rb in _childRigidbodies)
         {
             rb.isKinematic = false;
+            rb.gameObject.layer = 8;
         }
         _mainCollider.enabled = false;
         _mainRigidbody.isKinematic = true;
@@ -71,8 +78,10 @@ public class Death_RagdollAndDestroy : GameAction
 
     private void DeactivateRagdoll()
     {
+        isRagdoll = false;
         _humanoidPawn.GetAnimator().enabled = true;
-        _humanoidPawn.pawnController.enabled = true;
+        if(_humanoidPawn.pawnController != null)
+            _humanoidPawn.pawnController.enabled = true;
 
         
         foreach (Collider collider in _childColliders)

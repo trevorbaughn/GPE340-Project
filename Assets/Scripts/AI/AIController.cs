@@ -118,7 +118,7 @@ public class AIController : Controller
     //stub; if AI gets senses, this can be expanded
     protected virtual void SeekTarget()
     {
-        if (GameManager.instance.player.controlledPawn != null)
+        if (GameManager.instance.player != null && GameManager.instance.player.controlledPawn != null)
         {
             targetTransform = GameManager.instance.player.controlledPawn.transform;
         }

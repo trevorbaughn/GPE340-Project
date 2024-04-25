@@ -397,6 +397,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 72a7ccd04560f0e08aafc86f674f9948, type: 3}
       insertIndex: -1
       addedObject: {fileID: 633587842505007009}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 72a7ccd04560f0e08aafc86f674f9948, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1125009778872879065}
     - targetCorrespondingSourceObject: {fileID: 1082271958561512970, guid: 72a7ccd04560f0e08aafc86f674f9948, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5111859367035942647}
@@ -1227,6 +1230,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1125009778872879065}
+        m_TargetAssemblyTypeName: GameAction_DropPickup, Assembly-CSharp
+        m_MethodName: DropRandomItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHealDamage:
+    m_PersistentCalls:
+      m_Calls: []
   maxHealth: 100
   currentHealth: 100
 --- !u!114 &7560151833048336002
@@ -1385,6 +1403,25 @@ MonoBehaviour:
   onDestroyGameObject:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1125009778872879065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6095363779057131790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5378b170f6346f3a1a76a11d7be2737, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropTable:
+  - objectToDrop: {fileID: 4727563846190803718, guid: 23f7b2746d0157f7cb2a804dde06db76, type: 3}
+    weight: 3
+  - objectToDrop: {fileID: 6016923850197068260, guid: 3405477bbc83d7b0d96f61e2d8b9cfe0, type: 3}
+    weight: 1
+  - objectToDrop: {fileID: 191285216442265995, guid: 33fdfcfdc558e571b9e7d1689651e571, type: 3}
+    weight: 2
 --- !u!1 &6292509730079916629 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1082271958561512970, guid: 72a7ccd04560f0e08aafc86f674f9948, type: 3}

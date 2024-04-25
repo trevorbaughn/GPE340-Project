@@ -74,13 +74,15 @@ MonoBehaviour:
     - {fileID: 2042678529352422833, guid: 270a95442e50904d395c8c6575419db2, type: 3}
     - {fileID: 2538136167086328954, guid: bb786f4b7c62b0162a6dbbe58f7ad0d9, type: 3}
     - {fileID: 2538136167086328954, guid: bb786f4b7c62b0162a6dbbe58f7ad0d9, type: 3}
-  defaultMasterSliderValue: 0
-  defaultMusicSliderValue: 0
-  defaultSoundSliderValue: 0
-  isFullscreen: 0
-  menuButton: {fileID: 0}
-  soundAudioSource: {fileID: 0}
-  musicAudioSource: {fileID: 0}
+  defaultMasterSliderValue: 1
+  defaultMusicSliderValue: 1
+  defaultSoundSliderValue: 1
+  isFullscreen: 1
+  resolutionDropdown: 0
+  menuButton: {fileID: 8300000, guid: 7d0c398b556a2d9949c99bb9a220c882, type: 3}
+  pickup: {fileID: 8300000, guid: 5503b99a20934f275946c1e27e72a688, type: 3}
+  soundAudioSource: {fileID: 4070541084069845235}
+  musicAudioSource: {fileID: 7355487090224418848}
 --- !u!82 &4070541084069845235
 AudioSource:
   m_ObjectHideFlags: 0

@@ -20,6 +20,7 @@ public class Pickup : MonoBehaviour
     public virtual void OnTriggerEnter(Collider other)
     {
         OnPickup.Invoke();
+        GameManager.instance.soundAudioSource.PlayOneShot(GameManager.instance.pickup);
         Destroy(this.gameObject);
     }
 }

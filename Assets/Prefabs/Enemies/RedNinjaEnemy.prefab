@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1125009778872879065, guid: ba5978446720f91a0b8f598bf0183bab, type: 3}
+      propertyPath: dropTable.Array.data[1].weight
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125009778872879065, guid: ba5978446720f91a0b8f598bf0183bab, type: 3}
+      propertyPath: dropTable.Array.data[2].weight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4635732306445059823, guid: ba5978446720f91a0b8f598bf0183bab, type: 3}
       propertyPath: maxMovementSpeed
       value: 5

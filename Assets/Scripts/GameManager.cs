@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     
     [Header("Sounds")]
     public AudioClip menuButton;
+    public AudioClip pickup;
     public AudioSource soundAudioSource;
     public AudioSource musicAudioSource;
     
@@ -93,6 +94,29 @@ public class GameManager : MonoBehaviour
     }
     
     public void SpawnEnemy (GameObject enemyToSpawn)
+    {
+        Transform randomSpawnPoint = GetRandomSpawnPoint();
+        GameObject newEnemy = Instantiate(enemyToSpawn, randomSpawnPoint.transform.position, randomSpawnPoint.transform.rotation);
+        AIController newEnemyAI = newEnemy.GetComponent<AIController>();
+        enemies.Add(newEnemyAI);
+        
+        // Subscribe to the new enemy's OnDeath event
+        Health newAIHealth = newEnemyAI.GetComponent<Health>();
+        if (newAIHealth != null)
+        {
+            newAIHealth.OnDeath.AddListener(OnEnemyDeath);
+            
+            GameObject newEnemyUI = Instantiate(prefabEnemyUI, newEnemy.transform) as GameObject;
+            // connect enemyhealthdisplay
+            EnemyHealthDisplay newEnemyUIScript = newEnemyUI.GetComponent<EnemyHealthDisplay>();
+            if (newEnemyUIScript != null)
+            {
+                newEnemyUIScript.enemyHealth = newAIHealth;
+            }
+        }
+    }
+    
+    public void SpawnEnemy ()
     {
         Transform randomSpawnPoint = GetRandomSpawnPoint();
         GameObject newEnemy = Instantiate(prefabsPossibleEnemies[UnityEngine.Random.Range(0,prefabsPossibleEnemies.Length)], randomSpawnPoint.transform.position, randomSpawnPoint.transform.rotation);
